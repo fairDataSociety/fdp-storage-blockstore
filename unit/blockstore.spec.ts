@@ -1,9 +1,4 @@
-import * as Block from 'multiformats/block'
-import * as codec from '../../src/codecs'
-import { hasher } from '../../src/hashes'
-import { BeeSon, Type } from '@fairdatasociety/beeson'
-
-describe('beeson', () => {
+describe('fdp-blockstore', () => {
   it('should work with integer type', async () => {
     const json = 123
     const beeson = new BeeSon<number>({ json })
@@ -125,7 +120,7 @@ describe('beeson', () => {
     const value = beeson
     // encode a block
     const block = await Block.encode({ value, codec, hasher })
-console.log(JSON.stringify(block.value.typeManager.getDnaObject()))
+    console.log(JSON.stringify(block.value.typeManager.getDnaObject()))
     const result = `bah6acgzakjrglswz3olz3tvelmgypkn2r67ofl6jh3cnuqsy6zysmc7rqkcq`
     // expect(block.value).toEqual(blockValue)
     expect(block.bytes.length).toBe(288)

@@ -1,11 +1,11 @@
 {
-  "name": "@fairDataSociety/beeson-multiformats",
-  "version": "1.0.0",
-  "description": "codec for multiformats",
+  "name": "@fairDataSociety/fdp-storage-blockstore",
+  "version": "0.1.0",
+  "description": "IPLD blockstore",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fairDataSociety/beeson-multiformats.git"
+    "url": "git+https://github.com/fairDataSociety/fdp-storage-blockstore.git"
   },
   "scripts": {
     "test": "jest --verbose --config=jest.config.ts",
@@ -24,12 +24,14 @@
   "author": "Rogelio Morrell",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fairDataSociety/beeson-multiformats/issues"
+    "url": "https://github.com/fairDataSociety/fdp-storage-blockstore/issues"
   },
-  "homepage": "https://github.com/fairDataSociety/beeson-multiformats#readme",
+  "homepage": "https://github.com/fairDataSociety/fdp-storage-blockstore#readme",
   "dependencies": {
     "@ethersphere/swarm-cid": "^0.1.0",
-    "@fairdatasociety/beeson": "^0.1.1",
+    "@fairdatasociety/beeson": "0.1.1",
+    "@fairdatasociety/fdp-storage": "^0.5.1",
+    "blockstore-core": "^2.0.1",
     "keccak256": "^1.0.6",
     "multiformats": "^9.8.1"
   },
