@@ -1,5 +1,5 @@
 {
-  "name": "@fairDataSociety/fdp-storage-blockstore",
+  "name": "@fairdatasociety/fdp-storage-blockstore",
   "version": "0.1.0",
   "description": "IPLD blockstore",
   "main": "dist/index.js",
