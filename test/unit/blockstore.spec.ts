@@ -1,7 +1,7 @@
 import { BatchId } from '@ethersphere/bee-js'
 import { BeeSon, Type } from '@fairdatasociety/beeson'
 import * as Block from 'multiformats/block'
-import { FdpStorageBlockstore, getCidFromBeeson } from '../src'
+import { FdpStorageBlockstore } from '../../src'
 import { FdpStorage } from '@fairdatasociety/fdp-storage'
 import { codec, hasher } from '@fairdatasociety/beeson-multiformats'
 

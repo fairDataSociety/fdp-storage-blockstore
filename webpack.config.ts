@@ -35,7 +35,7 @@ const base = async (env?: Partial<WebpackEnvParams>): Promise<Configuration> => 
       path,
       filename,
       sourceMapFilename: filename + '.map',
-      library: 'BeeSon',
+      library: 'fdp-storage-blockstore',
       libraryTarget: 'umd',
       globalObject: 'this',
     },
