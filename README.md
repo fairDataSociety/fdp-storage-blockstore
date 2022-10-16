@@ -8,7 +8,7 @@ FDP - Beeson IPLD Blockstore
 import { BatchId } from '@ethersphere/bee-js'
 import { BeeSon, Type } from '@fairdatasociety/beeson'
 import * as Block from 'multiformats/block'
-import { FdpStorageBlockstore, getCidFromBeeson } from '../src'
+
 import { FdpStorage } from '@fairdatasociety/fdp-storage'
 import { codec, hasher } from '@fairdatasociety/beeson-multiformats'
 import { FdpStorageBlockstore } from '@fairdatasociety/fdp-storage-blockstore'
@@ -30,7 +30,7 @@ const resp = await fdpBlockstore.get(block.cid)
 
 // Helpers
 
-// pub block
+// put block
 const cid = await fdpBlockstore.putBeesonBlock(beeson)
 
 // get block
