@@ -1,24 +1,47 @@
 # fdp-storage-blockstore
-IPLD store for Graphsync integrations
 
+FDP - Beeson IPLD Blockstore
 
-## How it works
-
-### Use case 1: From beeson-multiformats blocks to destination IPLD codec blocks. Router exchange must support message hooks to translate one codec to another.
-```
-Node with custom IPLD (beeson-multiformats) ----> js-graphsync router exchange ----> Node with custom IPLD (destination IPLD codec)
-
-```
-
-
-### Use case 2: From origin codec blocks to beeson-multiformats blocks. Router exchange must support message hooks to translate one codec to another.
-```
-Node with custom IPLD (origin IPLD codec) ----> js-graphsync router exchange ----> Node with custom IPLD (beeson-multiformats)
-```
-
-## Dapp integration
+## Usage
 
 ```typescript
+import { BatchId } from '@ethersphere/bee-js'
+import { BeeSon, Type } from '@fairdatasociety/beeson'
+import * as Block from 'multiformats/block'
+import { FdpStorageBlockstore, getCidFromBeeson } from '../src'
+import { FdpStorage } from '@fairdatasociety/fdp-storage'
+import { codec, hasher } from '@fairdatasociety/beeson-multiformats'
+import { FdpStorageBlockstore } from '@fairdatasociety/fdp-storage-blockstore'
 
+const id = `54ed0da82eb85ab72f9b8c37fdff0013ac5ba0bf96ead71d4a51313ed831b9e5` as BatchId
+const client = new FdpStorage('http://localhost:1633', id)
 
+const fdpBlockstore = new FdpStorageBlockstore(client);
+
+const json = [0, 1, 2, 3, 5, 6]
+const beeson = new BeeSon({ json })
+
+// encode a block
+const block = await Block.encode({ value, codec, hasher })
+await fdpBlockstore.put(block.cid, block.bytes)
+
+// get block
+const resp = await fdpBlockstore.get(block.cid)
+
+// Helpers
+
+// pub block
+const cid = await fdpBlockstore.putBeesonBlock(beeson)
+
+// get block
+const resp = await fdpBlockstore.getBeesonBlock(cid)
 ```
+
+
+## Maintainers
+
+- [molekilla](https://github.com/molekilla)
+
+## License
+
+[MIT](./LICENSE)

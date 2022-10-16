@@ -33,7 +33,7 @@ describe('fdp-blockstore', () => {
     // get block
     const resp = await fdpBlockstore.get(block.cid)
 
-    expect((resp).toString()).toEqual(block.bytes.toString())
+    expect(resp.toString()).toEqual(block.bytes.toString())
   })
 
   it('should create beeson block', async () => {
@@ -44,7 +44,7 @@ describe('fdp-blockstore', () => {
 
     // pub block
     const cid = await fdpBlockstore.putBeesonBlock(beeson)
-    
+
     // get block
     const resp = await fdpBlockstore.getBeesonBlock(cid)
 

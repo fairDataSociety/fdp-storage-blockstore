@@ -10,6 +10,12 @@ import * as Block from 'multiformats/block'
 import { JsonValue } from '@fairdatasociety/beeson/dist/types'
 import { Reference } from '@ethersphere/swarm-cid'
 
+/**
+ * Asserts a beeson cid reference
+ * @param cid cid
+ * @param value value as Uint8Array
+ * @returns true if the reference is a valid cid
+ */
 async function assertBeesonCidReference(cid: CID, value: Uint8Array): Promise<boolean> {
   const chunk = makeChunkedFile(value)
   const ref = chunk.address()
@@ -35,6 +41,11 @@ function bytesToHex(bytes: Uint8Array, len?: number): string {
   return hex
 }
 
+/**
+ * Get CID from Beeson helper
+ * @param beeson beeson value
+ * @returns A CID
+ */
 export async function getCidFromBeeson(beeson: BeeSon<JsonValue>): Promise<CID> {
   const value = beeson.serialize()
   const chunk = makeChunkedFile(value)
@@ -43,6 +54,11 @@ export async function getCidFromBeeson(beeson: BeeSon<JsonValue>): Promise<CID> 
   return CID.decode(digest.create(0x1b, ref).digest)
 }
 
+/**
+ * Get Swarm Reference from Beeson
+ * @param beeson beeson value
+ * @returns A Swarm Reference (chunk address)
+ */
 export async function getSwarmRefFromBeeson(beeson: BeeSon<JsonValue>): Promise<ChunkAddress> {
   const value = beeson.serialize()
   const chunk = makeChunkedFile(value)
@@ -50,9 +66,15 @@ export async function getSwarmRefFromBeeson(beeson: BeeSon<JsonValue>): Promise<
   return chunk.address()
 }
 
+/**
+ * Converts a swarm reference to cid
+ * @param cid CID
+ * @returns A swarm reference
+ */
 export function toSwarmRef(cid: CID): Reference {
   return bytesToHex(cid.multihash.digest) as Reference
 }
+
 export interface FdpStorageOptions extends Options {
   pod: string
   path: string
