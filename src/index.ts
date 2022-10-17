@@ -16,7 +16,7 @@ import { Reference } from '@ethersphere/swarm-cid'
  * @param value value as Uint8Array
  * @returns true if the reference is a valid cid
  */
-async function assertBeesonCidReference(cid: CID, value: Uint8Array): Promise<boolean> {
+export async function assertBeesonCidReference(cid: CID, value: Uint8Array): Promise<boolean> {
   const chunk = makeChunkedFile(value)
   const ref = chunk.address()
 
