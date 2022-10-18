@@ -1,20 +1,24 @@
 import { BatchId } from '@ethersphere/bee-js'
 import { BeeSon, Type } from '@fairdatasociety/beeson'
 import * as Block from 'multiformats/block'
-import { FdpStorageLevel } from '../../src/fdpstorage-level'
+import { FdpStorageLevel, OpenOptions } from '../../src/fdpstorage-level'
 import { FdpStorage } from '@fairdatasociety/fdp-storage'
 import { codec, hasher } from '@fairdatasociety/beeson-multiformats'
+import { JsonValue } from '@fairdatasociety/beeson/dist/types'
 
 describe('fdp-storage-level', () => {
   let leveldown: FdpStorageLevel
-  let block
+  let block: Block.Block<any>
   const json = [0, 1, 2, 3, 5, 6]
 
-  beforeEach(() => {
+  beforeEach(async () => {
     const id = `54ed0da82eb85ab72f9b8c37fdff0013ac5ba0bf96ead71d4a51313ed831b9e5` as BatchId
     const client = new FdpStorage('http://localhost:1633', id)
 
-    leveldown = new FdpStorageLevel({ valueEncoding: 'json' }, {}, client)
+    leveldown = new FdpStorageLevel()
+    await leveldown.open({
+      client,
+    } as OpenOptions)
   })
 
   it('when created should be defined', async () => {

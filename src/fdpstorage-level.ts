@@ -10,23 +10,23 @@ import {
   NodeCallback,
 } from 'abstract-level'
 
+export interface OpenOptions extends AbstractOpenOptions {
+  client: FdpStorage
+}
 /**
  * Fdp-Storage implemented as an AbstractLevel interface
  */
 export class FdpStorageLevel extends AbstractLevel<string, CID, Uint8Array> {
-  constructor(
-    manifest: Partial<any>,
-    options: AbstractDatabaseOptions<CID, Uint8Array>,
-    private store: FdpStorage,
-  ) {
-    // Declare supported encodings
-    const encodings = { json: true }
-
-    // Call AbstractLevel constructor
-    super({ encodings }, options)
+  store!: FdpStorage
+  public constructor(options?: AbstractDatabaseOptions<CID, Uint8Array>) {
+    const _manifest = {
+      encodings: { json: true },
+    }
+    super(_manifest, options)
   }
 
-  _open(options: AbstractOpenOptions | unknown, callback: NodeCallback<void>) {
+  _open(options: OpenOptions, callback: NodeCallback<void>) {
+    this.store = options.client
     this.nextTick(callback)
   }
 
