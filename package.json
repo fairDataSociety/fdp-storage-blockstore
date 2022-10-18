@@ -37,7 +37,9 @@
     "@fairdatasociety/beeson": "0.1.1",
     "@fairdatasociety/beeson-multiformats": "^1.0.3",
     "@fairdatasociety/fdp-storage": "^0.5.1",
+    "abstract-level": "^1.0.3",
     "blockstore-core": "^2.0.1",
+    "idb": "^7.1.0",
     "keccak256": "^1.0.6",
     "multiformats": "^9.8.1"
   },

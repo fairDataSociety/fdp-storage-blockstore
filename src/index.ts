@@ -142,9 +142,9 @@ export class FdpStorageBlockstore {
    * @returns
    */
   async has(key: CID, options?: Options | undefined): Promise<boolean> {
-    const ref = toSwarmRef(key)
+    const swarmRef = toSwarmRef(key)
 
-    return this.fdp.connection.bee.isReferenceRetrievable(key.toString())
+    return this.fdp.connection.bee.isReferenceRetrievable(swarmRef.toString())
   }
 
   /**
