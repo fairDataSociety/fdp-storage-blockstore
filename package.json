@@ -37,8 +37,10 @@
     "@fairdatasociety/beeson": "0.1.1",
     "@fairdatasociety/beeson-multiformats": "^1.0.3",
     "@fairdatasociety/fdp-storage": "^0.5.1",
+    "@types/lokijs": "^1.5.7",
     "blockstore-core": "^2.0.1",
     "keccak256": "^1.0.6",
+    "lokijs": "^1.5.12",
     "multiformats": "^9.8.1"
   },
   "devDependencies": {

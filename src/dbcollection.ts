@@ -1,5 +1,6 @@
 import { FeedReader, FeedWriter } from '@ethersphere/bee-js'
 import { FeedUploadOptions } from '@ethersphere/bee-js/dist/types/feed'
+import { Reference } from '@ethersphere/swarm-cid'
 import { BeeSon } from '@fairdatasociety/beeson'
 import { JsonValue } from '@fairdatasociety/beeson/dist/types'
 import { FdpStorage } from '@fairdatasociety/fdp-storage'
@@ -20,9 +21,7 @@ export class FeedDBCollection {
     return this.writer.upload(this.fdp.connection.postageBatchId, reference, options)
   }
 
-  async get() {
-    const res = await this.reader.download()
-
-    return this.fdp.connection.bee.downloadData(res.reference, undefined)
+  async get(ref: Reference) {
+    return this.fdp.connection.bee.downloadData(ref, undefined)
   }
 }
