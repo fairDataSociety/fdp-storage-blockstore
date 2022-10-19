@@ -1,6 +1,6 @@
 {
   "name": "@fairdatasociety/fdp-storage-blockstore",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "IPLD blockstore",
   "main": "dist/index.js",
   "repository": {
